@@ -1,0 +1,34 @@
+
+@function is-valid-length($value) {
+	@return (type-of($value) == "number" and not unitless($value)) or (index(auto initial inherit 0, $value) != false);
+}
+
+@mixin position($position, $args: ()) {
+	position: $position;
+	$offsets: top right bottom left;
+	$n: 1;
+	@each $value in $args {
+		@if $value != null {
+			$name: nth($offsets, $n);
+			@if is-valid-length($value) {
+				#{$name}: $value;
+			}
+			@else {
+				@warn "Invalid value `#{$value}` for offset `#{$name}`.";
+			}
+		}
+		$n: $n+1;
+	}
+}
+
+@mixin absolute($args: ()) {
+	@include position(absolute, $args);
+}
+
+@mixin fixed($args: ()) {
+	@include position(fixed, $args);
+}
+
+@mixin relative($args: ()) {
+	@include position(relative, $args);
+}

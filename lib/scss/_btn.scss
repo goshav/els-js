@@ -1,0 +1,212 @@
+/* Buttons base style */
+
+.btn {
+	@extend %head-font;
+
+	display: inline-block;
+	padding: 6px 12px;
+	margin-bottom: 0;
+	text-align: center;
+	white-space: nowrap;
+	vertical-align: middle;
+	-ms-touch-action: manipulation;
+	touch-action: manipulation;
+	cursor: pointer;
+	user-select: none;
+	background-image: none;
+	border-radius: $base-round;
+	font-size: 14px;
+	line-height: 1.5;
+	text-transform: uppercase;
+	letter-spacing: inherit;
+	color: rgba(black, 0.87);
+	text-decoration: none;
+
+	> .svg-icon {
+		fill: rgba(black, 0.87);
+		@extend %trn-fill;
+	}
+
+	> .label {
+		vertical-align: middle;
+	}
+
+	&:hover {
+		color: white;
+	}
+
+	// special
+	outline: 0;
+	outline-offset: 0;
+	border: 0;
+	position: relative;
+	z-index: 0;
+	transition: all 0.15s ease-in-out;
+
+	&:focus, &:active, &.active, &:active:focus, &.active:focus {
+		outline: 0;
+		outline-offset: 0;
+		box-shadow: none;
+	}
+
+	&:disabled, &.disabled, &[disabled] {
+		opacity: .8;
+		cursor: default;
+	}
+}
+
+.btn-default, .btn-link {
+
+	color: rgba(black, 0.87);
+	> .svg-icon {
+		fill: rgba(black, 0.87);
+	}
+
+	&:hover {
+		color: black;
+		> .svg-icon {
+			fill: black;
+		}
+	}
+
+	&:disabled, &.disabled, &[disabled] {
+		color: rgba(black, 0.87) !important;
+		> .svg-icon {
+			fill: rgba(black, 0.87) !important;
+		}
+	}
+}
+
+.btn-link > .label {
+	text-decoration: underline;
+}
+
+/* -- Buttons circle */
+
+.btn.btn-fab {
+	padding: 0;
+	border-radius: 50%;
+	span, i { line-height: 56px; }
+}
+
+@each $intent, $color in $intent-colors {
+
+	.btn-#{$intent}, .dropdown-toggle.btn-#{$intent} {
+
+		@if $intent != 'default' {
+			color: rgba(white, 0.87);
+			> .svg-icon {
+				fill: rgba(white, 0.87);
+			}
+			&:hover {
+				color: white;
+				> .svg-icon {
+					fill: white;
+				}
+			}
+
+			&:disabled, &.disabled, &[disabled] {
+				color: rgba(white, 0.87) !important;
+				> .svg-icon {
+					fill: rgba(white, 0.87) !important;
+				}
+			}
+		}
+
+		background-color: $color;
+
+		&:hover { background-color: darken($color, 7%); }
+		&:active, &.active { background-color: darken($color, 14%); }
+		&:focus { background-color: darken($color, 21%); }
+		&:disabled, &.disabled, &[disabled] { background-color: lighten($color, 7%) !important; }
+	}
+}
+
+/* -- Buttons sizes */
+
+.btn {
+	&:not(.btn-fab) {
+		min-width: 60px;
+	}
+
+	height: 36px;
+
+	> .svg-icon {
+		@include square(24px);
+		padding: 4px;
+		+ .label {
+			margin: 0 4px 0 2px;
+		}
+	}
+
+	&.btn-icon {
+		padding: 6px;
+	}
+}
+
+$btn-sizes: (
+	lg: 122px 44px 18px 24px,
+	sm: 60px  26px 12px 18px,
+	xs: 46px  20px 10px 16px
+);
+
+@each $intent, $size in $btn-sizes {
+
+	.btn-#{$intent}, .btn-group-#{$intent} > .btn {
+
+		&:not(.btn-fab) {
+			min-width: nth($size, 1);
+		}
+
+		height: nth($size, 2);
+		font-size: nth($size, 3);
+		//line-height: 1.4;
+		//padding: 4px 12px;
+
+		> .svg-icon {
+			@include square( nth($size, 4) );
+			padding: 2px;
+			/*+ .label {
+				margin: 0 3px 0 2px;
+			}*/
+		}
+
+		&.btn-icon {
+			//padding: 4px;
+		}
+	}
+}
+
+/* -- Button groups */
+
+.btn-group, .btn-group-vertical {
+	> .btn {
+		border-radius: 0;
+		&:first-child { border-top-left-radius: $base-round; }
+		&:last-child { border-bottom-right-radius: $base-round; }
+		&:hover { z-index: 1; }
+		&:disabled, &.disabled, &[disabled] { z-index: 0; }
+	}
+}
+
+.btn-group > .btn {
+	&:first-child { border-bottom-left-radius: $base-round; }
+	&:last-child { border-top-right-radius: $base-round; }
+}
+
+.btn-group-vertical > .btn {
+	&:first-child { border-top-right-radius: $base-round; }
+	&:last-child { border-bottom-left-radius: $base-round; }
+}
+
+//.btn-group.open .dropdown-toggle { outline: 0; outline-offset: 0; box-shadow: none; }
+
+.btn-group > .btn + .btn { margin-left: 1px; }
+
+.btn-group-vertical > .btn + .btn { margin-top: 1px; }
+
+.btn:focus:hover, .btn:active:hover, .btn.active:hover {
+	.btn-group > & {
+		z-index: 2;
+	}
+}

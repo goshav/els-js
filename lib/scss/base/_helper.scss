@@ -1,0 +1,102 @@
+
+// Rounded image helper
+.img-round {
+	border-radius: 50%;
+}
+
+// Float position helper
+.pull-left,
+%pull-left {
+	float: left !important;
+}
+.pull-right,
+%pull-right {
+	float: right !important;
+}
+.pull-none,
+%pull-none {
+	float: none !important;
+}
+
+// Text position helper
+.text-left,
+%text-left {
+	text-align: left !important;
+}
+.text-right,
+%text-right {
+	text-align: right !important;
+}
+.text-center,
+%text-center {
+	text-align: center !important;
+}
+.text-justify,
+%text-justify {
+	text-align: justify !important;
+}
+
+.clear,
+%clear {
+	clear: both;
+	width: 100%;
+	height: 0;
+	overflow: hidden;
+}
+
+.display-none {
+	display: none;
+	visibility: hidden;
+	opacity: 0;
+}
+
+.clear-list {
+	&, & ul, & li {
+		margin: 0;
+		padding: 0;
+	}
+	li {
+		list-style: none;
+	}
+}
+
+.fade {
+	opacity: 0;
+	transition: opacity .3s linear;
+	&.in {
+		opacity: 1;
+	}
+}
+
+%text-overflow {
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+// transitions
+
+%trn-color {
+	transition: .3s color;
+}
+%trn-fill {
+	transition: .3s fill;
+}
+%trn-bgc {
+	transition: .3s background-color;
+}
+%trn-bc {
+	transition: .3s border-color;
+}
+%trn-color-bgc {
+	transition: .3s color, .3s background-color;
+}
+%trn-color-bbc {
+	transition: .3s color, .3s border-bottom-color;
+}
+%trn-color-bc {
+	transition: .3s color, .3s border-color;
+}
+%trn-bsh {
+	transition: .3s box-shadow;
+}

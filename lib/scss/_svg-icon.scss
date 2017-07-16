@@ -1,0 +1,13 @@
+.svg-icon {
+	@include square(24px);
+	display: inline-block;
+	fill: $color-gray-d;
+
+	&, svg {
+		vertical-align: top;
+	}
+
+	svg {
+		width: 100%;
+	}
+}

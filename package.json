@@ -1,0 +1,26 @@
+{
+  "name": "els-js",
+  "version": "0.0.17",
+  "description": "Elastic javascript ui package",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "elastic",
+    "els",
+    "els-js",
+    "react",
+    "ui"
+  ],
+  "files": [
+    "src/",
+    "package.json",
+    "README.md"
+  ],
+  "dependencies": {
+    "react": "^15.5.4"
+  },
+  "author": "GoshaV [Maniako]",
+  "license": "GPL v3"
+}

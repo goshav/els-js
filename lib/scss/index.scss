@@ -1,0 +1,43 @@
+
+@import "base/settings";
+@import "base/normalize";
+@import "base/base";
+@import "base/helper";
+
+@import "mixins/clearfix";
+@import "mixins/input";
+@import "mixins/position";
+@import "mixins/size";
+@import "mixins/text-overflow";
+@import "mixins/placeholder";
+
+body {
+	font-family: $base-font;
+}
+
+h1 { font-size: 36px; }
+h2 { font-size: 34px; }
+h3 { font-size: 30px; }
+h4 { font-size: 28px; }
+h5 { font-size: 24px; }
+h6 { font-size: 20px; }
+
+code,
+kbd,
+pre,
+samp {
+	font: {
+		family: $base-font-mono;
+		weight: $base-font-mono-weight;
+	}
+}
+
+h1, h2, h3, h4, h5, h6, .head-font, %head-font {
+	font: {
+		family: $base-font-head;
+		weight: $base-font-head-weight;
+	}
+}
+
+@import "svg-icon";
+@import "btn";

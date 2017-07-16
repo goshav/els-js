@@ -1,0 +1,136 @@
+
+// Set the global `box-sizing` state to `border-box`.
+//
+// css-tricks.com/inheriting-box-sizing-probably-slightly-better-best-practice
+// paulirish.com/2012/box-sizing-border-box-ftw
+
+html {
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+* {
+
+	&,
+	&:before,
+	&:after {
+		-webkit-box-sizing: inherit;
+		-moz-box-sizing: inherit;
+		box-sizing: inherit;
+	}
+
+}
+
+// As well as using normalize.css, it is often advantageous to remove all
+// margins from certain elements.
+html, body,
+h1, h2, h3, h4, h5, h6,
+p, blockquote, pre,
+dl, dd, ol, ul,
+form, fieldset, legend,
+figure,
+table, th, td, caption,
+hr {
+	margin:  0;
+	padding: 0;
+}
+
+// Reset default props
+
+// Give a help cursor to elements that give extra info on `:hover`.
+abbr[title],
+dfn[title] {
+	cursor: help;
+}
+
+// Remove underlines from potentially troublesome elements.
+u,
+ins {
+	text-decoration: none;
+}
+
+// Apply faux underlines to inserted text via `border-bottom`.
+ins {
+	border-bottom: 1px solid;
+}
+
+///*------------------------------------*\
+// HTML STYLE
+//\*------------------------------------*/
+
+html {
+	font-size: $base-font-size; // [1]
+	font-weight: $base-font-weight;
+	line-height: $base-line-height; // [1]
+	background-color: $base-background-color;
+	color: $base-text-color;
+	//min-height: $base-background-color; // [2]
+	-webkit-text-size-adjust: 100%; // [3]
+	-ms-text-size-adjust: 100%; // [3]
+	-moz-osx-font-smoothing: grayscale; // [4]
+	-webkit-font-smoothing: antialiased; // [4]
+}
+
+///*------------------------------------*\
+//    #BASE-IMAGES
+//\*------------------------------------*/
+
+// 1. Fluid images for responsive purposes.
+// 2. Offset `alt` text from surrounding copy.
+img {
+	display: inline-block;
+	max-width: 100%; // [1]
+	font-style: italic; // [2]
+}
+
+// 1. Google Maps breaks if `max-width: 100%` acts upon it; use their selector
+//    to remove the effects.
+// 2. If a `width` and/or `height` attribute have been explicitly defined, let’s
+//    not make the image fluid.
+.gm-style img, // [1]
+img[width], // [2]
+img[height] {  // [2]
+	max-width: none;
+}
+
+///*------------------------------------*\
+// base style
+//\*------------------------------------*/
+
+h1, h2, h3, h4, h5, h6,
+ul, ol, dl,
+blockquote, address,
+table,
+fieldset, figure,
+pre,
+hr,
+iframe, p {
+	margin-bottom: $base-spacing-unit * 2;
+
+	&:last-child {
+		margin-bottom: 0;
+	}
+}
+
+li {
+	list-style: none;
+	margin: 0 0 $base-spacing-unit;
+
+	&:last-child {
+		margin-bottom: 0;
+	}
+}
+
+ul, ol, dd {
+	//margin-left: $base-spacing-unit * 6;
+	margin: 0;
+	padding: 0;
+}
+
+a {
+	text-decoration: none;
+	/*&:hover {
+		text-decoration: underline;
+	}*/
+}

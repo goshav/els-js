@@ -1,0 +1,112 @@
+.toast-console
+{
+	z-index: 5000;
+	.toast-wrap {
+		margin: 0 10px;
+	}
+}
+
+.toast-element {
+	position: absolute;
+	min-width: 120px;
+	max-width: 30vw;
+	transition: .3s top, .3s bottom, .3s opacity;
+
+	.toast {
+		position: relative;
+		padding: 10px;
+		background-color: rgba(black, 0.92);
+		box-shadow: 0 3px 8px -5px rgba(black,0.4);
+		border-radius: 2px;
+
+		/*&.level-error {
+			background-color: rgba($clr-danger, 0.95);
+		}
+		&.iconable {
+			padding-left: 53px;
+		}
+		&.closable {
+			padding-right: 50px;
+		}*/
+	}
+}
+
+.toast-box {
+	display: flex;
+
+	> .svg-icon, > .btn {
+		flex-shrink: 0;
+	}
+
+	> .svg-icon {
+		@include square(32px);
+		fill: white;
+		padding: 7px;
+	}
+
+	> .text {
+		color: white;
+		font-size: 12px;
+		line-height: 16px;
+		text-shadow: 0 1px 1px rgba(0, 0, 0, 0.25);
+		padding: 9px 8px 7px 8px;
+		flex-grow: 1;
+	}
+
+	> .progress {
+		width: 200px;
+		padding: 12px 6px;
+		.pg-line {
+			background-color: rgba(white, .2);
+		}
+	}
+
+	> .divider {
+		width: 1px;
+		background-color: rgba(white, .2);
+		margin-left: 8px;
+		height: 24px;
+		margin-top: 4px;
+	}
+
+	> .btn {
+		background-color: transparent;
+		color: rgba(white, .65);
+		margin-left: 8px;
+		height: 32px;
+		padding: 4px 12px;
+
+		> .svg-icon {
+			fill: rgba(white, .65);
+		}
+
+		&.btn-icon {
+			padding: 4px;
+			min-width: 32px;
+		}
+
+		&:hover {
+			background-color: rgba(white, .15);
+			color: white;
+			> .svg-icon {
+				fill: white;
+			}
+		}
+
+		&:focus, &:active {
+			background-color: rgba(white, .25);
+		}
+	}
+}
+
+@media (max-width: 800px) {
+	.toast-element {
+		max-width: 50vw;
+	}
+}
+
+@media (max-width: 380px) {
+	.toast-element {
+		max-width: 100%;
+	}
+}

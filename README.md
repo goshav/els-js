@@ -32,6 +32,7 @@ $ npm install els-js
 | `Trigger` | Object | - |
 | `Tools` | Object | - |
 | `Dom` | Object | HTML Dom manipulations |
+| `Toast` | Object | - |
 
 ## Example
 

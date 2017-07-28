@@ -1,6 +1,6 @@
 {
   "name": "els-js",
-  "version": "0.0.17",
+  "version": "0.0.22",
   "description": "Elastic javascript ui package",
   "main": "src/index.js",
   "scripts": {
@@ -16,10 +16,13 @@
   "files": [
     "src/",
     "package.json",
+    "CHANGELOG",
+    "LICENSE",
     "README.md"
   ],
   "dependencies": {
-    "react": "^15.5.4"
+    "react": "^15.5.4",
+    "react-dom": "^15.5.4"
   },
   "author": "GoshaV [Maniako]",
   "license": "GPL v3"

@@ -7,15 +7,15 @@ $base-font-size:        16px            !default;
 $base-font-weight:      400             !default;
 $base-font-head-weight: 300             !default;
 $base-font-mono-weight: 400             !default;
-$base-line-height:      1.4em           !default;
+$base-line-height:      1.4             !default;
 $base-text-color:       #333     		!default;
 $base-background-color: transparent 	!default;
 $base-round:            2px             !default;
 $base-round-inner:      4px             !default;
 $base-round-outer:      6px             !default;
 $base-spacing-unit:     8px;
-$base-font: 			"PT Serif", Georgia, Verdana, Arial, sans-serif;
-$base-font-head:    	"Fira Sans Extra Condensed", sans-serif;
+$base-font: 			"Roboto", Georgia, Verdana, Arial, sans-serif;
+$base-font-head:    	"Roboto Condensed", sans-serif;
 $base-font-mono:    	"Roboto Mono", monospace;
 
 $header-height: 60px;
@@ -47,7 +47,7 @@ $color-theme-dark4: darken(#4CAF50, 18%);
 $color-theme-dark5: darken(#4CAF50, 20%);
 
 $intent-colors: (
-		default: #5c7080,
+		default: #8d99ae,
 		primary: #4caf50, // $color-theme
 		success: #137cbd,
 		danger:  #db3737

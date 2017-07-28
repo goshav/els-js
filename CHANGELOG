@@ -1,0 +1,42 @@
+# Changelog
+All notable changes to this project will be documented in this file.
+
+## [0.0.22] - 2017-07-28
+### Changed
+- Fixed Dom.Page
+
+## [0.0.21] - 2017-07-27
+### Changed
+- Fixed HotKeys, add key `esc` as alias `escape`
+- Fixed AjaxJson, change TypeError, add Error.name & Error.code, add getter & setter for onUrl & onComplete
+
+## [0.0.20] - 2017-07-26
+### Changed
+- Fixed bug in Tools.MeasureScrollbar
+
+## [0.0.19] - 2017-07-26
+### Added
+- Component in ElsJs.Tools, file /components/proto
+
+## [0.0.18] - 2017-07-18
+### Added
+- index-test.js
+- Service Toast (toast.js)
+- Dom.StyleSheets function for manipulation browser css style sheets
+- Components.ProgressLine
+- Components.ProgressCircle
+- Tools.IsBrowser and Tools.IsNode function
+
+### Changed
+- Dom.Event<Add, Remove> & Dom.ClassName element property may be Array, HTMLElement collection or string
+- Dom.ClassName name property support multiply classes
+
+### Updated
+- Dom.Element.create method, add `prepend` property
+
+### Removed
+- Dom.Closest removed, use HTMLElement.closet
+
+## [0.0.17] - 2017-07-16
+### Added
+- Initial beta release

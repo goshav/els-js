@@ -15,8 +15,8 @@
 	user-select: none;
 	background-image: none;
 	border-radius: $base-round;
-	font-size: 14px;
-	line-height: 1.5;
+	font-size: 15px;
+	line-height: 24px/14px + 0em;
 	text-transform: uppercase;
 	letter-spacing: inherit;
 	color: rgba(black, 0.87);
@@ -28,7 +28,7 @@
 	}
 
 	> .label {
-		vertical-align: middle;
+		vertical-align: top;
 	}
 
 	&:hover {
@@ -55,6 +55,10 @@
 	}
 }
 
+.btn-link:hover {
+	background-color: rgba(black, .1);
+}
+
 .btn-default, .btn-link {
 
 	color: rgba(black, 0.87);
@@ -71,6 +75,7 @@
 
 	&:disabled, &.disabled, &[disabled] {
 		color: rgba(black, 0.87) !important;
+		background-color: initial;
 		> .svg-icon {
 			fill: rgba(black, 0.87) !important;
 		}
@@ -86,14 +91,16 @@
 .btn.btn-fab {
 	padding: 0;
 	border-radius: 50%;
-	span, i { line-height: 56px; }
+	> span, > .svg-icon {
+		line-height: 36px;
+	}
 }
 
 @each $intent, $color in $intent-colors {
 
-	.btn-#{$intent}, .dropdown-toggle.btn-#{$intent} {
+	.btn-#{$intent}/*, .dropdown-toggle.btn-#{$intent}*/ {
 
-		@if $intent != 'default' {
+		//@if $intent != 'default' {
 			color: rgba(white, 0.87);
 			> .svg-icon {
 				fill: rgba(white, 0.87);
@@ -111,31 +118,40 @@
 					fill: rgba(white, 0.87) !important;
 				}
 			}
-		}
+		//}
 
 		background-color: $color;
 
 		&:hover { background-color: darken($color, 7%); }
 		&:active, &.active { background-color: darken($color, 14%); }
 		&:focus { background-color: darken($color, 21%); }
-		&:disabled, &.disabled, &[disabled] { background-color: lighten($color, 7%) !important; }
+		&:disabled, &.disabled, &[disabled] { background-color: lighten(desaturate($color, 23%), 23%) !important; }
 	}
 }
 
 /* -- Buttons sizes */
 
 .btn {
+	height: 36px;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+
 	&:not(.btn-fab) {
-		min-width: 60px;
+		min-width: 36px;
 	}
 
-	height: 36px;
+	&.btn-fab {
+		width: 36px;
+	}
 
 	> .svg-icon {
 		@include square(24px);
-		padding: 4px;
-		+ .label {
-			margin: 0 4px 0 2px;
+		padding: 3px;
+
+		&:first-child:not(:last-child) {
+			margin-left: - 4px;
+			margin-right: ( 12px - 4px ) / 2;
 		}
 	}
 
@@ -145,9 +161,10 @@
 }
 
 $btn-sizes: (
-	lg: 122px 44px 18px 24px,
-	sm: 60px  26px 12px 18px,
-	xs: 46px  20px 10px 16px
+	lg: 8px 44px 18px 5px,
+//  df: 6px 36px 15px 4px,
+	sm: 4px 28px 13px 3px,
+	xs: 2px 20px 11px 2px
 );
 
 @each $intent, $size in $btn-sizes {
@@ -155,31 +172,44 @@ $btn-sizes: (
 	.btn-#{$intent}, .btn-group-#{$intent} > .btn {
 
 		&:not(.btn-fab) {
-			min-width: nth($size, 1);
+			min-width: nth($size, 2);
+		}
+
+		&.btn-fab {
+			width: nth($size, 2);
 		}
 
 		height: nth($size, 2);
 		font-size: nth($size, 3);
-		//line-height: 1.4;
-		//padding: 4px 12px;
+		padding: nth($size, 1) nth($size, 1)*2;
+		//line-height: ( nth($size, 2) - nth($size, 1)*2 ) / (nth($size, 3) - 1px);
+		//line-height: nth($size, 2) - nth($size, 1)*2;
+		line-height: 1em;
 
 		> .svg-icon {
-			@include square( nth($size, 4) );
-			padding: 2px;
-			/*+ .label {
-				margin: 0 3px 0 2px;
-			}*/
+			@include square( nth($size, 2) - nth($size, 1)*2 );
+			padding: nth($size, 4);
+
+			&:first-child:not(:last-child) {
+				margin-left: - nth($size, 4);
+				margin-right: ( nth($size, 1)*2 - nth($size, 4) ) / 2;
+			}
 		}
 
 		&.btn-icon {
-			//padding: 4px;
+			padding: nth($size, 1) - 2px;
 		}
+	}
+
+	.btn-group-vertical.btn-group-#{$intent} > .btn + .btn {
+		height: nth($size, 2) + 1;
 	}
 }
 
 /* -- Button groups */
 
 .btn-group, .btn-group-vertical {
+	display: flex;
 	> .btn {
 		border-radius: 0;
 		&:first-child { border-top-left-radius: $base-round; }
@@ -187,6 +217,9 @@ $btn-sizes: (
 		&:hover { z-index: 1; }
 		&:disabled, &.disabled, &[disabled] { z-index: 0; }
 	}
+}
+.btn-group-vertical {
+	flex-direction: column;
 }
 
 .btn-group > .btn {
@@ -201,9 +234,15 @@ $btn-sizes: (
 
 //.btn-group.open .dropdown-toggle { outline: 0; outline-offset: 0; box-shadow: none; }
 
-.btn-group > .btn + .btn { margin-left: 1px; }
+.btn-group > .btn + .btn {
+	margin-left: 0;
+	border-left: 1px solid rgba(white, .2);
+}
 
-.btn-group-vertical > .btn + .btn { margin-top: 1px; }
+.btn-group-vertical > .btn + .btn {
+	margin-top: 0;
+	border-top: 1px solid rgba(white, .2);
+}
 
 .btn:focus:hover, .btn:active:hover, .btn.active:hover {
 	.btn-group > & {
